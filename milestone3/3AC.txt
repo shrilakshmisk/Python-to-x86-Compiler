@@ -1,0 +1,540 @@
+Student.__init__:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	student_id = 24(%rbp)
+	sub %rsp 8
+	-16(%rbp) = student_id
+	name = 32(%rbp)
+	sub %rsp 8
+	-24(%rbp) = name
+	grades = 40(%rbp)
+	sub %rsp 8
+	-32(%rbp) = grades
+	*(self + 0) = student_id
+	*(self + 8) = name
+	*(self + 16) = grades
+	add %rsp 32
+	pop %rbp
+	ret
+	endfunc
+Student.display_grades:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	#t0 = "Grades:"
+	pushparam #t0
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	#t1 = *(self + 16)
+	pushparam #t1
+	push ret_addr
+	sub %rsp 8
+	call len 1
+	add %rsp 8
+	#t2 = %rax
+	leng = #t2
+	sub %rsp 8
+	-24(%rbp) = leng
+	#t3 = 0
+	i = #t3
+	Goto .L1
+.L0:
+	#t6 = i + 1
+	i = #t6
+.L1:
+	#t7 = i < leng
+	Ifz #t7 Goto .L2
+	#t8 = i * 8
+	#t9 = *(self + 16) 
+	#t10 = *(#t9 + #t8)
+	pushparam #t10
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	Goto .L0
+.L2:
+	add %rsp 24
+	pop %rbp
+	ret
+	endfunc
+Student.display_student:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	#t11 = "Student ID:"
+	pushparam #t11
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	#t12 = *(self + 0)
+	pushparam #t12
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	#t13 = "Name:"
+	pushparam #t13
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	#t14 = *(self + 8)
+	pushparam #t14
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	pushparam self
+	push ret_addr
+	sub %rsp 8
+	call Student.display_grades 1
+	add %rsp 8
+	add %rsp 8
+	pop %rbp
+	ret
+	endfunc
+Student.calculate_average:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	#t15 = *(self + 16)
+	pushparam #t15
+	push ret_addr
+	sub %rsp 8
+	call len 1
+	add %rsp 8
+	#t16 = %rax
+	#t17 = 0
+	#t18 = #t16 == #t17
+	Ifz #t18 Goto .L3
+	#t19 = 0
+	add %rsp 8
+	pop %rbp
+	%rax = #t19
+	ret
+	Goto .L4
+.L3:
+.L4:
+	#t20 = 0
+	total = #t20
+	sub %rsp 8
+	-16(%rbp) = total
+	#t21 = *(self + 16)
+	pushparam #t21
+	push ret_addr
+	sub %rsp 8
+	call len 1
+	add %rsp 8
+	#t22 = %rax
+	leng = #t22
+	sub %rsp 8
+	-32(%rbp) = leng
+	i = #t3
+	Goto .L6
+.L5:
+	#t25 = i + 1
+	i = #t25
+.L6:
+	#t26 = i < leng
+	Ifz #t26 Goto .L7
+	#t27 = i * 8
+	#t28 = *(self + 16) 
+	#t29 = *(#t28 + #t27)
+	#t30 = total + #t29
+	total = #t30
+	-16(%rbp) = total
+	Goto .L5
+.L7:
+	#t31 = total / leng
+	add %rsp 32
+	pop %rbp
+	%rax = #t31
+	ret
+	endfunc
+Student.highest_grade:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	#t32 = *(self + 16)
+	pushparam #t32
+	push ret_addr
+	sub %rsp 8
+	call len 1
+	add %rsp 8
+	#t33 = %rax
+	leng = #t33
+	sub %rsp 8
+	-24(%rbp) = leng
+	#t34 = 0
+	#t35 = #t34 * 8
+	#t36 = *(self + 16) 
+	#t37 = *(#t36 + #t35)
+	highest = #t37
+	sub %rsp 8
+	-32(%rbp) = highest
+	#t38 = 0
+	i = #t38
+	Goto .L9
+.L8:
+	#t41 = i + 1
+	i = #t41
+.L9:
+	#t42 = i < leng
+	Ifz #t42 Goto .L10
+	#t43 = i * 8
+	#t44 = *(self + 16) 
+	#t45 = *(#t44 + #t43)
+	#t46 = not #t45
+	Ifz #t46 Goto .L11
+	#t47 = 0
+	add %rsp 32
+	pop %rbp
+	%rax = #t47
+	ret
+	Goto .L12
+.L11:
+.L12:
+	#t48 = i * 8
+	#t49 = *(self + 16) 
+	#t50 = *(#t49 + #t48)
+	#t51 = #t50 > highest
+	Ifz #t51 Goto .L13
+	#t52 = i * 8
+	#t53 = *(self + 16) 
+	#t54 = *(#t53 + #t52)
+	highest = #t54
+	-32(%rbp) = highest
+	Goto .L14
+.L13:
+.L14:
+	Goto .L8
+.L10:
+	add %rsp 32
+	pop %rbp
+	%rax = highest
+	ret
+	endfunc
+Student.lowest_grade:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	#t55 = 0
+	#t56 = #t55 * 8
+	#t57 = *(self + 16) 
+	#t58 = *(#t57 + #t56)
+	lowest = #t58
+	sub %rsp 8
+	-16(%rbp) = lowest
+	#t59 = *(self + 16)
+	pushparam #t59
+	push ret_addr
+	sub %rsp 8
+	call len 1
+	add %rsp 8
+	#t60 = %rax
+	leng = #t60
+	sub %rsp 8
+	-32(%rbp) = leng
+	#t61 = 0
+	i = #t61
+	Goto .L16
+.L15:
+	#t64 = i + 1
+	i = #t64
+.L16:
+	#t65 = i < leng
+	Ifz #t65 Goto .L17
+	#t66 = i * 8
+	#t67 = *(self + 16) 
+	#t68 = *(#t67 + #t66)
+	#t69 = not #t68
+	Ifz #t69 Goto .L18
+	#t70 = 0
+	add %rsp 32
+	pop %rbp
+	%rax = #t70
+	ret
+	Goto .L19
+.L18:
+.L19:
+	#t71 = i * 8
+	#t72 = *(self + 16) 
+	#t73 = *(#t72 + #t71)
+	#t74 = #t73 < lowest
+	Ifz #t74 Goto .L20
+	#t75 = i * 8
+	#t76 = *(self + 16) 
+	#t77 = *(#t76 + #t75)
+	lowest = #t77
+	-16(%rbp) = lowest
+	Goto .L21
+.L20:
+.L21:
+	Goto .L15
+.L17:
+	add %rsp 32
+	pop %rbp
+	%rax = lowest
+	ret
+	endfunc
+main:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	#t78 = "S001"
+	#t79 = "Alice Smith"
+	#t80 = 88
+	#t81 = 92
+	#t82 = 77
+	#t83 = 90
+	#t84 = 32
+	pushparam #t84
+	push ret_addr
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	#t85 = %rax
+	*(#t85 + 0) = #t80
+	*(#t85 + 8) = #t81
+	*(#t85 + 16) = #t82
+	*(#t85 + 24) = #t83
+	#t86 = 24
+	pushparam #t86
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	#t87 = %rax
+	pushparam #t85
+	pushparam #t79
+	pushparam #t78
+	pushparam #t87
+	push ret_addr
+	sub %rsp 32
+	call Student.__init__ 4
+	add %rsp 32
+	student1 = #t87
+	sub %rsp 8
+	-8(%rbp) = student1
+	#t88 = "S002"
+	#t89 = "Bob Brown"
+	#t90 = 84
+	#t91 = 76
+	#t92 = 88
+	#t93 = 85
+	#t94 = 32
+	pushparam #t94
+	push ret_addr
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	#t95 = %rax
+	*(#t95 + 0) = #t90
+	*(#t95 + 8) = #t91
+	*(#t95 + 16) = #t92
+	*(#t95 + 24) = #t93
+	#t96 = 24
+	pushparam #t96
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	#t97 = %rax
+	pushparam #t95
+	pushparam #t89
+	pushparam #t88
+	pushparam #t97
+	push ret_addr
+	sub %rsp 32
+	call Student.__init__ 4
+	add %rsp 32
+	student2 = #t97
+	sub %rsp 8
+	-16(%rbp) = student2
+	#t98 = "S003"
+	#t99 = "Carol Jones"
+	#t100 = 90
+	#t101 = 90
+	#t102 = 92
+	#t103 = 93
+	#t104 = 32
+	pushparam #t104
+	push ret_addr
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	#t105 = %rax
+	*(#t105 + 0) = #t100
+	*(#t105 + 8) = #t101
+	*(#t105 + 16) = #t102
+	*(#t105 + 24) = #t103
+	#t106 = 24
+	pushparam #t106
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	#t107 = %rax
+	pushparam #t105
+	pushparam #t99
+	pushparam #t98
+	pushparam #t107
+	push ret_addr
+	sub %rsp 32
+	call Student.__init__ 4
+	add %rsp 32
+	student3 = #t107
+	sub %rsp 8
+	-24(%rbp) = student3
+	#t108 = "S004"
+	#t109 = "Dave Wilson"
+	#t110 = 78
+	#t111 = 82
+	#t112 = 80
+	#t113 = 85
+	#t114 = 32
+	pushparam #t114
+	push ret_addr
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	#t115 = %rax
+	*(#t115 + 0) = #t110
+	*(#t115 + 8) = #t111
+	*(#t115 + 16) = #t112
+	*(#t115 + 24) = #t113
+	#t116 = 24
+	pushparam #t116
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	#t117 = %rax
+	pushparam #t115
+	pushparam #t109
+	pushparam #t108
+	pushparam #t117
+	push ret_addr
+	sub %rsp 32
+	call Student.__init__ 4
+	add %rsp 32
+	student4 = #t117
+	sub %rsp 8
+	-32(%rbp) = student4
+	#t118 = 32
+	pushparam #t118
+	push ret_addr
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	#t119 = %rax
+	*(#t119 + 0) = student1
+	*(#t119 + 8) = student2
+	*(#t119 + 16) = student3
+	*(#t119 + 24) = student4
+	list_of_students = #t119
+	sub %rsp 8
+	-40(%rbp) = list_of_students
+	pushparam list_of_students
+	push ret_addr
+	sub %rsp 8
+	call len 1
+	add %rsp 8
+	#t120 = %rax
+	leng = #t120
+	sub %rsp 8
+	-48(%rbp) = leng
+	#t121 = 0
+	i = #t121
+	Goto .L23
+.L22:
+	#t124 = i + 1
+	i = #t124
+.L23:
+	#t125 = i < leng
+	Ifz #t125 Goto .L24
+	#t126 = i * 8
+	#t127 = *(list_of_students + #t126)
+	temp_student = #t127
+	sub %rsp 8
+	-64(%rbp) = temp_student
+	pushparam temp_student
+	push ret_addr
+	sub %rsp 8
+	call Student.display_student 1
+	add %rsp 8
+	pushparam temp_student
+	push ret_addr
+	sub %rsp 8
+	call Student.calculate_average 1
+	add %rsp 8
+	#t128 = %rax
+	average = #t128
+	sub %rsp 8
+	-72(%rbp) = average
+	#t129 = "Highest Grade:"
+	pushparam #t129
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	pushparam temp_student
+	push ret_addr
+	sub %rsp 8
+	call Student.highest_grade 1
+	add %rsp 8
+	#t130 = %rax
+	pushparam #t130
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	#t131 = "Lowest Grade:"
+	pushparam #t131
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	pushparam temp_student
+	push ret_addr
+	sub %rsp 8
+	call Student.lowest_grade 1
+	add %rsp 8
+	#t132 = %rax
+	pushparam #t132
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	Goto .L22
+.L24:
+	exit
+	#t133 = "__main__"
+	#t134 = __name__ == #t133
+	Ifz #t134 Goto .L25
+	push ret_addr
+	sub %rsp 0
+	call main 0
+	add %rsp 0
+	Goto .L26
+.L25:
+.L26:

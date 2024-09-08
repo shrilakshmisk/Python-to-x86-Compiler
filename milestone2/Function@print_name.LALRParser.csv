@@ -1,0 +1,2 @@
+Lexeme,Token,Type/Return Type,Offset,Scope Name,Line Number,Number of Parameters,Parameter Number
+self,Function_Parameter,LALRParser,0,Function@print_name.LALRParser,28,1,1

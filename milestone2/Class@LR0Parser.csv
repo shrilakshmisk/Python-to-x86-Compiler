@@ -1,0 +1,5 @@
+Lexeme,Token,Type/Return Type,Offset,Scope Name,Line Number,Number of Parameters,Parameter Number
+__init__,Function,LR0Parser,12,Class@LR0Parser,10,3,-1
+self.a,Class_Attribute,int,0,Class@LR0Parser,4,0,-1
+self.lr0name,Class_Attribute,str,12,Class@LR0Parser,11,0,-1
+self.srname,Class_Attribute,str,4,Class@LR0Parser,5,0,-1

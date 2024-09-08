@@ -1,0 +1,5 @@
+Lexeme,Token,Type/Return Type,Offset,Scope Name,Line Number,Number of Parameters,Parameter Number
+__init__,Function,CLRParser,12,Class@CLRParser,17,3,-1
+self.a,Class_Attribute,int,0,Class@CLRParser,4,0,-1
+self.clrname,Class_Attribute,str,12,Class@CLRParser,18,0,-1
+self.srname,Class_Attribute,str,4,Class@CLRParser,5,0,-1

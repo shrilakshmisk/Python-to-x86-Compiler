@@ -1,0 +1,7 @@
+Lexeme,Token,Type/Return Type,Offset,Scope Name,Line Number,Number of Parameters,Parameter Number
+__init__,Function,LALRParser,20,Class@LALRParser,24,4,-1
+print_name,Function,None,28,Class@LALRParser,28,1,-1
+self.a,Class_Attribute,int,0,Class@LALRParser,4,0,-1
+self.clrname,Class_Attribute,str,12,Class@LALRParser,18,0,-1
+self.lalrname,Class_Attribute,str,20,Class@LALRParser,25,0,-1
+self.srname,Class_Attribute,str,4,Class@LALRParser,5,0,-1

@@ -1,0 +1,4 @@
+Lexeme,Token,Type/Return Type,Offset,Scope Name,Line Number,Number of Parameters,Parameter Number
+myname_,Function_Parameter,str,8,Function@__init__.CLRParser,17,3,2
+parentname_,Function_Parameter,str,16,Function@__init__.CLRParser,17,3,3
+self,Function_Parameter,CLRParser,0,Function@__init__.CLRParser,17,3,1

@@ -1,0 +1,186 @@
+ShiftReduceParser.__init__:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	name_ = 24(%rbp)
+	sub %rsp 8
+	-16(%rbp) = name_
+	t0 = 3
+	*(self + 0) = t0
+	*(self + 4) = name_
+	add %rsp 16
+	pop %rbp
+	ret
+	endfunc
+LR0Parser.__init__:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	myname_ = 24(%rbp)
+	sub %rsp 8
+	-16(%rbp) = myname_
+	parentname_ = 32(%rbp)
+	sub %rsp 8
+	-24(%rbp) = parentname_
+	*(self + 12) = myname_
+	pushparam parentname_
+	pushparam self
+	push ret_addr
+	sub %rsp 16
+	call ShiftReduceParser.__init__ 2
+	add %rsp 16
+	t1 = %rax
+	add %rsp 24
+	pop %rbp
+	ret
+	endfunc
+CLRParser.__init__:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	myname_ = 24(%rbp)
+	sub %rsp 8
+	-16(%rbp) = myname_
+	parentname_ = 32(%rbp)
+	sub %rsp 8
+	-24(%rbp) = parentname_
+	*(self + 12) = myname_
+	pushparam parentname_
+	pushparam self
+	push ret_addr
+	sub %rsp 16
+	call ShiftReduceParser.__init__ 2
+	add %rsp 16
+	t2 = %rax
+	add %rsp 24
+	pop %rbp
+	ret
+	endfunc
+LALRParser.__init__:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	myname_ = 24(%rbp)
+	sub %rsp 8
+	-16(%rbp) = myname_
+	clrname_ = 32(%rbp)
+	sub %rsp 8
+	-24(%rbp) = clrname_
+	srname_ = 40(%rbp)
+	sub %rsp 8
+	-32(%rbp) = srname_
+	*(self + 20) = myname_
+	pushparam srname_
+	pushparam clrname_
+	pushparam self
+	push ret_addr
+	sub %rsp 24
+	call CLRParser.__init__ 3
+	add %rsp 24
+	t3 = %rax
+	add %rsp 32
+	pop %rbp
+	ret
+	endfunc
+LALRParser.print_name:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	self = 16(%rbp)
+	sub %rsp 8
+	-8(%rbp) = self
+	t4 = "SLR name:"
+	pushparam t4
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	t5 = *(self + 4)
+	pushparam t5
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	t6 = "CLR name:"
+	pushparam t6
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	t7 = *(self + 12)
+	pushparam t7
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	t8 = "LALR name:"
+	pushparam t8
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	t9 = *(self + 20)
+	pushparam t9
+	push ret_addr
+	sub %rsp 8
+	call print 1
+	add %rsp 8
+	add %rsp 8
+	pop %rbp
+	ret
+	endfunc
+main:
+	beginfunc
+	push %rbp
+	%rbp = %rsp
+	t10 = "LALR"
+	t11 = "CLR"
+	t12 = "Shift-Reduce"
+	t13 = 28
+	pushparam t13
+	sub %rsp 4
+	call allocmem 1
+	add %rsp 4
+	t14 = %rax
+	pushparam t12
+	pushparam t11
+	pushparam t10
+	pushparam t14
+	push ret_addr
+	sub %rsp 32
+	call LALRParser.__init__ 4
+	add %rsp 32
+	obj = t14
+	sub %rsp 8
+	-8(%rbp) = obj
+	pushparam obj
+	push ret_addr
+	sub %rsp 8
+	call LALRParser.print_name 1
+	add %rsp 8
+	add %rsp 8
+	pop %rbp
+	ret
+	endfunc
+	t15 = "__main__"
+	t16 = __name__ == t15
+	Ifz t16 Goto L0
+	push ret_addr
+	sub %rsp 0
+	call main 0
+	add %rsp 0
+	Goto L1
+L0:
+L1:

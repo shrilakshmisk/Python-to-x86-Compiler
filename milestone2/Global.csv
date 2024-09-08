@@ -1,0 +1,6 @@
+Lexeme,Token,Type/Return Type,Offset,Scope Name,Line Number,Number of Parameters,Parameter Number
+CLRParser,Class,CLRParser,0,Global,15,-1,-1
+LALRParser,Class,LALRParser,0,Global,22,-1,-1
+LR0Parser,Class,LR0Parser,0,Global,8,-1,-1
+ShiftReduceParser,Class,ShiftReduceParser,0,Global,1,-1,-1
+main,Function,None,0,Global,37,0,-1

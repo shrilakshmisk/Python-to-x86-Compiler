@@ -1,0 +1,4 @@
+Lexeme,Token,Type/Return Type,Offset,Scope Name,Line Number,Number of Parameters,Parameter Number
+__init__,Function,ShiftReduceParser,0,Class@ShiftReduceParser,3,2,-1
+self.a,Class_Attribute,int,0,Class@ShiftReduceParser,4,0,-1
+self.srname,Class_Attribute,str,4,Class@ShiftReduceParser,5,0,-1
